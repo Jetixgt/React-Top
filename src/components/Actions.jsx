@@ -29,13 +29,15 @@ function Actions({ onDelete }) {
        Сбросить
       </button>
 
-      <button
-        type="button"
-        className="delete-button"
-        onClick={onDelete}
-      >
-        Удалить
-      </button>
+      {onDelete && (
+        <button
+          type="button"
+          className="delete-button"
+          onClick={onDelete}
+        >
+          Удалить
+        </button>
+      )}
     </div>
   )
 }

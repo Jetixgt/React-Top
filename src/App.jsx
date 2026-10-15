@@ -1,7 +1,13 @@
 import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
-import ProfileCard from './components/ProfileCard'
+import { PostsProvider } from './context/PostsContext.jsx'
+import About from './pages/About'
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
+import Profile from './pages/Profile'
+import Settings from './pages/Settings'
 
 const themes = [
   { value: 'pixel', label: 'Пиксельная аркада' },
@@ -16,21 +22,18 @@ function App() {
     <div className={`app theme-${theme}`}>
       <Header />
       <main>
-        <div className="theme-picker">
-          <label htmlFor="theme-select">Стиль оформления</label>
-          <select
-            id="theme-select"
-            value={theme}
-            onChange={(event) => setTheme(event.target.value)}
-          >
-            {themes.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <ProfileCard />
+        <PostsProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/settings"
+              element={<Settings theme={theme} onThemeChange={setTheme} themes={themes} />}
+            />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </PostsProvider>
       </main>
     </div>
   )
