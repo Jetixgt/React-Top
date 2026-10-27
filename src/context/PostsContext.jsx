@@ -6,7 +6,7 @@ const initialPosts = [
     id: 1,
     title: 'Моё первое React-приложение 🚀',
     text: 'Сегодня я изучаю React, компоненты и useState.',
-    author: 'Виктор',
+    author: 'Никита',
   },
   {
     id: 2,

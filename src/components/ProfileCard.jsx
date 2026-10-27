@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useUser } from '../context/useUser'
 
 function ProfileCard({ onCreatePost }) {
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
   const [error, setError] = useState('')
+  const { userName } = useUser()
+  const displayName = userName.trim() || 'Без имени'
 
   function addPost(event) {
     event.preventDefault()
@@ -21,10 +24,14 @@ function ProfileCard({ onCreatePost }) {
   return (
     <section className="profile-card">
       <div className="profile">
-        <div className="avatar">V</div>
+        <div className="avatar" aria-hidden="true">
+          {displayName.charAt(0).toUpperCase()}
+        </div>
         <div className="profile-info">
-          <h2>Виктор</h2>
-          <p>https://github.com/Jetixgt/React-Top</p>
+          <h2>{displayName}</h2>
+          <p>
+            <a href="https://github.com/Jetixgt?tab=repositories">@Jetixgt</a>
+          </p>
         </div>
       </div>
       <p className="profile-description">Frontend-разработчик, изучаю React.</p>

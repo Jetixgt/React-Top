@@ -1,4 +1,8 @@
+import { useUser } from '../context/useUser'
+
 function Settings({ theme, onThemeChange, themes }) {
+  const { userName, setUserName } = useUser()
+
   return (
     <section className="page settings-page">
       <h1>Настройки</h1>
@@ -15,6 +19,13 @@ function Settings({ theme, onThemeChange, themes }) {
             </option>
           ))}
         </select>
+        <label htmlFor="user-name">Имя пользователя</label>
+        <input
+          id="user-name"
+          type="text"
+          value={userName}
+          onChange={(event) => setUserName(event.target.value)}
+        />
       </div>
     </section>
   )

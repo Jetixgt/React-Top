@@ -49,8 +49,8 @@ function ProfileCard() {
                 <div className="avatar">V</div>
 
                 <div className="profile-info">
-                    <h2>Виктор</h2>
-                    <p>@victor_react</p>
+                    <h2>Никита</h2>
+                    <p>https://github.com/Jetixgt?tab=repositories</p>
                 </div>
             </div>
 

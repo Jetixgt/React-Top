@@ -1,14 +1,16 @@
 import Post from '../components/Post'
 import ProfileCard from '../components/ProfileCard'
 import { usePosts } from '../context/usePosts'
+import { useUser } from '../context/useUser'
 
 function Profile() {
   const { posts, setPosts, storageError } = usePosts()
+  const { userName } = useUser()
 
   function addPost({ title, text }) {
     setPosts((currentPosts) => [
       ...currentPosts,
-      { id: crypto.randomUUID(), title, text, author: 'Никита' },
+      { id: crypto.randomUUID(), title, text, author: userName.trim() || 'Без имени' },
     ])
   }
 
